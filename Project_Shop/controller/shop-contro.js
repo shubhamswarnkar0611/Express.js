@@ -1,7 +1,7 @@
-const adminData = require('../controller/product');
+const Product = require('../models/product')
 
 exports.getShop=(req, res, next) => {
-    const products = adminData.products;
+   const products = Product.fetchAll((products)=>{
     res.render('shop', {
       prods: products,
       pageTitle: 'Shop',
@@ -10,4 +10,6 @@ exports.getShop=(req, res, next) => {
       activeShop: true,
       productCSS: true
     });
+   });
+  
   }
